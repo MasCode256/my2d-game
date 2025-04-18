@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation "com.badlogicgames.gdx:gdx:1.10.0" // Основная библиотека
+    implementation "com.badlogicgames.gdx:gdx-box2d:1.10.0" // Если используете Box2D
+    implementation "com.badlogicgames.gdx:gdx-backend-lwjgl:1.10.0" // Для десктопной версии
+    implementation "com.badlogicgames.gdx:gdx-platform:1.10.0:natives-desktop" // Нативные библиотеки для десктопа
+    // Добавьте другие зависимости, если они нужны
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// Настройки для десктопного приложения
+task desktop(type: JavaExec) {
+    main = 'org.example.DesktopLauncher'
+    classpath = sourceSets.main.runtimeClasspath
+}
