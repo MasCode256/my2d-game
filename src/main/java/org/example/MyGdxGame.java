@@ -34,7 +34,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
         tick_handlers.add(unused -> {
             if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
-                System.out.println("ESCAPE PRESSED!");
+                Gdx.app.exit();
             }
 
             return null;
