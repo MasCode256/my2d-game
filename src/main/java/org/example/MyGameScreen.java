@@ -9,7 +9,6 @@ import java.awt.*;
 
 public class MyGameScreen implements Screen {
     private SpriteBatch batch;
-    private Shape shape;
 
     public MyGameScreen() {
         batch = new SpriteBatch();

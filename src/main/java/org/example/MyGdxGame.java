@@ -2,18 +2,20 @@ package org.example;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import org.example.gameObjects.primitive.GameObject;
 import org.example.gameObjects.Player;
-import org.example.gameObjects.tickHandlers.HandleEscapePress;
 
 import java.util.LinkedList;
+import java.util.function.Function;
 
 public class MyGdxGame extends ApplicationAdapter {
     private OrthographicCamera camera;
 
     LinkedList<GameObject> objects = new LinkedList<>();
+    LinkedList<Function<Void, Void>> tick_handlers = new LinkedList<>();
 
     public OrthographicCamera camera() {
         return camera;
@@ -29,7 +31,14 @@ public class MyGdxGame extends ApplicationAdapter {
         camera.setToOrtho(false, 800, 600);
 
         objects.add(new Player(this, 100, 100));
-        objects.add(new HandleEscapePress(this));
+
+        tick_handlers.add(unused -> {
+            if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+                System.out.println("ESCAPE PRESSED!");
+            }
+
+            return null;
+        });
     }
 
     @Override
@@ -37,6 +46,10 @@ public class MyGdxGame extends ApplicationAdapter {
         // Очистка экрана
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        for (Function<Void, Void> v : tick_handlers) {
+            v.apply(null);
+        }
 
         for (GameObject object : objects) {
             object.update();
@@ -48,5 +61,9 @@ public class MyGdxGame extends ApplicationAdapter {
         for (GameObject object : objects) {
             object.dispose();
         }
+    }
+
+    public void addTickHandler(Function<Void, Void> new_handler) {
+        tick_handlers.add(new_handler);
     }
 }
