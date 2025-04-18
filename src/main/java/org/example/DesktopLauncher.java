@@ -5,7 +5,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 public class DesktopLauncher {
     public static void main (String[] arg) {
-        System.out.println("My 2D Game alpha0.25.3");
+        System.out.println("My 2D Game v0.25.3_alpha");
 
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "My 2D Game";
