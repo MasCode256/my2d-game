@@ -9,8 +9,8 @@ public class DesktopLauncher {
 
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "My 2D Game";
-        config.width = 1920; // Ширина окна
-        config.height = 1080; // Высота окна
+        config.width = 1920;
+        config.height = 1080;
         config.fullscreen = true;
 
         new LwjglApplication(new MyGdxGame(), config);

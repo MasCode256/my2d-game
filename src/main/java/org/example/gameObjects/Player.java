@@ -11,10 +11,19 @@ import org.example.gameObjects.primitive.Damageable;
 public class Player extends Damageable {
     private ShapeRenderer shapeRenderer;
     private Rectangle bounds;
-    private float speed = 2; // скорость движения игрока
+    private float speed = 2;
+
+    private static final float INITIAL_HP = 100f;
 
     public Player(MyGdxGame game) {
-        super(game, 100f, 100, 100);
+        super(game, INITIAL_HP, 100, 100);
+
+        shapeRenderer = new ShapeRenderer();
+        bounds = new Rectangle(this.x, this.y, 50, 50);
+    }
+
+    public Player(MyGdxGame game, float x, float y) {
+        super(game, INITIAL_HP, x, y);
 
         shapeRenderer = new ShapeRenderer();
         bounds = new Rectangle(this.x, this.y, 50, 50);
@@ -24,16 +33,16 @@ public class Player extends Damageable {
     @Override
     public void update() {
         if (Gdx.input.isKeyPressed(com.badlogic.gdx.Input.Keys.LEFT) || Gdx.input.isKeyPressed(com.badlogic.gdx.Input.Keys.A)) {
-            this.x -= speed; // Движение влево
+            this.x -= speed;
         }
         if (Gdx.input.isKeyPressed(com.badlogic.gdx.Input.Keys.RIGHT) || Gdx.input.isKeyPressed(com.badlogic.gdx.Input.Keys.D)) {
-            this.x += speed; // Движение вправо
+            this.x += speed;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(com.badlogic.gdx.Input.Keys.D)) {
-            this.y += speed; // Движение вправо
+            this.y += speed;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(com.badlogic.gdx.Input.Keys.D)) {
-            this.y -= speed; // Движение вправо
+            this.y -= speed;
         }
 
         updateCoordinates(bounds);
@@ -43,8 +52,8 @@ public class Player extends Damageable {
 
     public void draw() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.BLACK); // Установите цвет игрока
-        shapeRenderer.rect(bounds.x, bounds.y, bounds.width, bounds.height); // Рисуем прямоугольник
+        shapeRenderer.setColor(Color.BLACK);
+        shapeRenderer.rect(bounds.x, bounds.y, bounds.width, bounds.height);
         shapeRenderer.end();
     }
 

@@ -27,7 +27,7 @@ public class MyGdxGame extends ApplicationAdapter {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 600);
 
-        objects.add(new Player(this));
+        objects.add(new Player(this, 10, 10));
     }
 
     @Override
