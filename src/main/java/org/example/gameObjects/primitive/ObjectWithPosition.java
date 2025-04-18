@@ -6,21 +6,21 @@ import org.example.MyGdxGame;
 
 import com.badlogic.gdx.math.Rectangle;
 
-public class ObjectWithCoordinates extends GameObject {
+public class ObjectWithPosition extends GameObject {
     protected float x = 0f, y = 0f, angle = 0f;
 
-    public ObjectWithCoordinates(MyGdxGame game) {
+    public ObjectWithPosition(MyGdxGame game) {
         super(game);
     }
 
-    public ObjectWithCoordinates(MyGdxGame game, float x, float y) {
+    public ObjectWithPosition(MyGdxGame game, float x, float y) {
         super(game);
 
         this.x = x;
         this.y = y;
     }
 
-    public ObjectWithCoordinates(MyGdxGame game, float x, float y, float angle) {
+    public ObjectWithPosition(MyGdxGame game, float x, float y, float angle) {
         super(game);
 
         this.x = x;

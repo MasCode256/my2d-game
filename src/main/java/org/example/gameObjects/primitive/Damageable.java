@@ -2,7 +2,7 @@ package org.example.gameObjects.primitive;
 
 import org.example.MyGdxGame;
 
-public class Damageable extends ObjectWithCoordinates {
+public class Damageable extends ObjectWithPositionAndScale {
     protected float hp = 1;
 
     public Damageable(MyGdxGame game) {
@@ -25,6 +25,15 @@ public class Damageable extends ObjectWithCoordinates {
 
     public Damageable(MyGdxGame game, float hp, float x, float y, float angle) {
         super(game, x, y, angle);
+        this.hp = hp;
+    }
+
+    public Damageable(MyGdxGame game, float x, float y, float angle, float width, float height) {
+        super(game, x, y, angle, width, height);
+    }
+
+    public Damageable(MyGdxGame game, float hp, float x, float y, float angle, float width, float height) {
+        super(game, x, y, angle, width, height);
         this.hp = hp;
     }
 

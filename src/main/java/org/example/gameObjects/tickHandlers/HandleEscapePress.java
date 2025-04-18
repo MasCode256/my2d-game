@@ -13,7 +13,7 @@ public class HandleEscapePress extends TickHandler {
     @Override
     public void update() {
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
-            game.pause();
+            game.dispose();
         }
     }
 }
