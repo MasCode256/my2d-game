@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import org.example.gameObjects.primitive.GameObject;
 import org.example.gameObjects.Player;
+import org.example.gameObjects.tickHandlers.HandleEscapePress;
 
 import java.util.LinkedList;
 
@@ -28,6 +29,7 @@ public class MyGdxGame extends ApplicationAdapter {
         camera.setToOrtho(false, 800, 600);
 
         objects.add(new Player(this, 10, 10));
+        objects.add(new HandleEscapePress(this));
     }
 
     @Override
